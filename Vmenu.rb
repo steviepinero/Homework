@@ -69,19 +69,14 @@ def menu_choice
       viewpoint = gets.chomp
       case viewpoint
     when '1' then viewpoint = "Progressive"
-      id = Voter.new(id, "Progressive")
         puts "Voter is #{name} and their views are Progressive"
       when '2' then viewpoint = "Conservative"
-        id = Voter.new(id, "Conservative")
         puts "Voter is #{name} and their views are Conservative"
       when '3' then viewpoint = "Libertarian"
-        id = Voter.new(id, "Libertarian")
         puts "Voter is #{name} and their views are Libertarian"
       when '4' then viewpoint = "Democrat"
-        id = Voter.new(id, "Democrat")
         puts "Voter is #{name} and their views are Democrat"
       when '5' then viewpoint = "Independant"
-        id = Voter.new(id, "Independant")
         puts "Voter is #{name} and their views are Independant"
       else puts "Please pick a valid option"
       end
@@ -103,7 +98,9 @@ def menu_choice
           puts "Candidate #{candidate_name} is a Democrat"
         end
         $candidate_array << Candidate.new(candidate_name, candidate_party)
-        
+        sleep 1
+        puts "Returning to main menu"
+        startmenu
       end
 
     elsif
@@ -128,17 +125,20 @@ def list
   puts "List (1)Voters or (2)Candidates?"
   response = gets.chomp
   case response
+
   when '1'
   $voter_array.each { |x|
-  print x.name + " "
-  print x.viewpoint
-  puts
+  print x.voter_name + " "
+  print x.voter_viewpoints
+  puts "\n"
   }
 
   when '2'
     $candidate_array.each { |x|
     print x.candidate_name + " "
-    print x.candidate_party}
+    print x.candidate_party
+    puts "\n"
+    }
   end
 
 

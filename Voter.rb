@@ -1,4 +1,4 @@
-require './Vmenu.rb'
+
 class Voter
   attr_accessor :voter_name, :voter_viewpoints
 
