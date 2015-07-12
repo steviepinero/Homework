@@ -167,6 +167,7 @@ end
 
 def vote
   puts "The election will now begin"
+  speech
 end
 
 
@@ -228,7 +229,7 @@ def menu_choice
 
   elsif menu_choice == "4"
       vote
-      speach
+      speech
 
     else menu_choice == "5"
       # quit == false
