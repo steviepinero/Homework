@@ -229,7 +229,6 @@ def menu_choice
 
   elsif menu_choice == "4"
       vote
-      speech
 
     else menu_choice == "5"
       # quit == false

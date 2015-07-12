@@ -1,10 +1,34 @@
 
 class Voter
-  attr_accessor :voter_name, :voter_viewpoints
+  attr_accessor :voter_name, :voter_viewpoints, :voter_count
 
   def initialize(voter_name, voter_viewpoints)
     @voter_name = voter_name
     @voter_viewpoints = voter_viewpoints
+    @voter_count += 1
+    @notavote = Array.new
+    @final = Array.new
+  end
+
+  def notavote
+    @voter_name.each do |voter|
+      if not voter.voted
+        @notavote.push(voter)
+      end
+    end
+    @notavote
+  end
+
+  def results
+    4.times do
+      puts "COUNTING VOTES"
+      sleep 1
+    end
+    puts "The votes have been tallied!"
+    @final.each do |candidate|
+      puts "#{candidate_name} has #{candidate.counter}"
+      sleep 1
+    end
   end
 
   def listen(politician)
@@ -22,21 +46,32 @@ class Candidate < Voter
     @candidate_party = candidate_party
     @counter = 1
   end
-
-
-
-  # def politics
-  #   # There is actually a range of politics within
-  #   # each party, so this isn't so cut-and-dry.
-  #   if party == "Republican"
-  #     "Conservative"
-  #   else
-  #     "Progressive"
-  #   end
-  # end
-
-
   end
+
+def every_stump
+  while true
+    if @Candidates.empty?
+      puts "Everyone has been accounted for"
+      break
+    else
+      stump
+    end
+  end
+end
+
+
+def stump
+  puts "The Candidates will now stand on their stumps"
+  speaker = @candidates.delete(@candidates.sample)
+  all = (@voter + @candidates).shuffle
+  puts "#{speaker.name} says you should vote for them!"
+  sleep 1
+
+  all.each do |voter|
+    voter.listen(speaker)
+  end
+  @results.push(speaker)
+end
 
   def speech
    stats
