@@ -51,9 +51,124 @@ end
 # class Game
   # while quit == true
 def startmenu
-  puts "What would you like to do? \n (1)Create. (2)List. (3)Update. (4)Vote. (5)quit"
+  puts "\nWhat would you like to do? \n (1)Create. (2)List. (3)Update. (4)Vote. (5)Quit"
   menu_choice
 end
+###
+def update
+  puts "Would you like to update a (1)Voter or (2)Candidate?"
+  update_choice = gets.chomp
+  if update_choice == "1"
+    puts "So you want to change a voter."
+    voter_update
+  else update_choice == "2"
+    puts "So you want to change a candidate?"
+    candidate_update
+  end
+end
+
+def voter_update
+  sleep 2#lists the names
+  $voter_array.each { |x|
+  print x.voter_name + ", \n"
+  }
+
+  sleep 1
+
+  puts "Which voter are you updating?"
+  voter_choice = gets.chomp.capitalize
+
+  #compare input against the voter Array
+  $voter_array.each { |x|
+  if x.voter_name == voter_choice
+
+
+  puts "#{x.voter_name}, the #{x.voter_viewpoints} found. \nWhat is their new name going to be?"
+  new_name = gets.chomp.capitalize
+
+  puts "Whats their political group?  \n(1)Progressive \n(2)Conservative \n(3)Libertarian \n(4)Democrat  \n(5)Independant"
+  new_viewpoint = gets.chomp
+
+  case new_viewpoint
+  when '1'
+    x.voter_name = new_name
+    x.voter_viewpoints = "Progressive"
+    puts "Returning to main menu"
+    startmenu
+  when '2'
+    x.voter_name = new_name
+    x.voter_viewpoints = "Conservative"
+    puts "Returning to main menu"
+    startmenu
+  when '3'
+    x.voter_name = new_name
+    x.voter_viewpoints = "Libertarian"
+    puts "Returning to main menu"
+    startmenu
+  when '4'
+    x.voter_name = new_name
+    x.voter_viewpoints = "Democrat"
+    puts "Returning to main menu"
+    startmenu
+  when '5'
+    x.voter_name = new_name
+    x.voter_viewpoints = "Independant"
+    puts "Returning to main menu"
+    startmenu
+  end
+else puts "Searching..."
+  puts
+end
+  }
+  puts "That person doesn't exist, returning to menu"
+  startmenu
+end
+
+def candidate_update
+sleep 2
+$candidate_array.each { |x|
+print x.candidate_name + ", \n"
+}
+
+puts "Which Candidate are you going to change?"
+candidate_choice = gets.chomp.capitalize
+
+$candidate_array.each { |x|
+if x.candidate_name == candidate_choice
+puts "#{x.candidate_name} of the #{x.candidate_party} has been found \n What is their new name?"
+  new_candidate_name = gets.chomp.capitalize
+
+  puts "Are they a (1)Republican or (2)Democrat?"
+  new_candidate_party = gets.chomp
+  case new_candidate_party
+  when '1'
+  x.candidate_name = new_candidate_name
+  x.candidate_party = "Republican"
+  puts "Returning to main menu"
+  startmenu
+when '2'
+  x.candidate_name = new_candidate_name
+  x.candidate_party = "Democrat"
+  puts "Returning to main menu"
+  startmenu
+  else
+    puts "Invalid"
+    candidate_update
+  end
+else
+  puts "Loading..."
+  puts
+end
+}
+puts "That person doesn't exist, returning to main menu"
+startmenu
+end
+
+
+def vote
+  puts "The election will now begin"
+end
+
 
 def menu_choice
   puts "<< Pick something >>"
@@ -103,15 +218,18 @@ def menu_choice
         startmenu
       end
 
-    elsif
-       menu_choice == "2"
+    elsif menu_choice == "2"
        list
        startmenu
+
   elsif menu_choice == "3"
       update
       startmenu
+
   elsif menu_choice == "4"
       vote
+      speach
+
     else menu_choice == "5"
       # quit == false
     end
@@ -140,19 +258,9 @@ def list
     puts "\n"
     }
   end
-
-
-
-def update
-  puts "Would you like to update a (1)Voter or (2)Candidate?"
 end
 
 
-def vote
-  puts "The election will now begin"
-end
-
-end
 # end
 
 # end
@@ -166,6 +274,8 @@ end
 #         then Candidate.new
 
 # g = Game.new
+
+
 introscreen
 startmenu
 banner

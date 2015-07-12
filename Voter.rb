@@ -34,9 +34,9 @@ class Candidate < Voter
     end
   end
 
-  def stump(voters)
-    voters.each do |v|
-      v.listen(party)
-    end
+
   end
-end
+
+  def speach
+    puts "Vote for me! If you want Free everything. \n Vote for me if you love food. \n Vote for me if you hate Mosquitos. \n Vote for me!"
+  end
