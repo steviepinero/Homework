@@ -53,7 +53,7 @@ end
 
 def every_stump
   while true
-    if @candidate_name.empty?
+    if @candidate_name
       puts "Everyone has been accounted for"
       break
     else
@@ -64,7 +64,7 @@ end
 
 public
 def listen(candidate)
-  puts "#{candidate_name}: #{candidate_name} sucks!"
+  puts "#{candidate}: #{candidate} sucks!"
 end
 
 
@@ -84,10 +84,10 @@ end
 
 public
   def speech
-    stump
+   stump
    stats
    every_stump
-   end
+  end
 
 
    def stats

@@ -4,6 +4,14 @@ require './Voter.rb'
 $voter_array = Array.new
 $candidate_array = Array.new
 
+def disclaimer
+  puts "\n"*15
+  puts "Please play in full screen"
+  sleep 2
+  puts "Product incomplete :("
+  sleep 2
+end
+
 def introscreen
   puts "\n"*100
 
@@ -275,7 +283,7 @@ end
 
 # g = Game.new
 
-
+disclaimer
 introscreen
 startmenu
 banner
