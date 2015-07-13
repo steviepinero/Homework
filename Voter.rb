@@ -1,3 +1,4 @@
+# require './Vmenu.rb'
 
 class Voter
   attr_accessor :voter_name, :voter_viewpoints, :voter_count
@@ -5,7 +6,7 @@ class Voter
   def initialize(voter_name, voter_viewpoints)
     @voter_name = voter_name
     @voter_viewpoints = voter_viewpoints
-    @voter_count += 1
+    @voter_count = 1
     @notavote = Array.new
     @final = Array.new
   end
@@ -31,26 +32,28 @@ class Voter
     end
   end
 
-  def listen(politician)
-    puts "#{candidate_name}: #{politician.candidate_name} sucks!"
-  end
+
 end
+
 
 
 
 class Candidate < Voter
   attr_accessor :candidate_party, :candidate_name, :counter
 
-  def initialize(candidate_name, candidate_party)
+  def initialize(candidate_name, candidate_party, counter)
     @candidate_name = candidate_name
     @candidate_party = candidate_party
     @counter = 1
   end
-  end
+end
+
+
+
 
 def every_stump
   while true
-    if @Candidates.empty?
+    if @candidate_name.empty?
       puts "Everyone has been accounted for"
       break
     else
@@ -59,22 +62,31 @@ def every_stump
   end
 end
 
+public
+def listen(candidate)
+  puts "#{candidate}: #{candidate} sucks!"
+end
+
 
 def stump
   puts "The Candidates will now stand on their stumps"
-  speaker = @candidates.delete(@candidates.sample)
-  all = (@voter + @candidates).shuffle
-  puts "#{speaker.name} says you should vote for them!"
+  speaker = @candidate_name
+  all = @voter_name, @candidate_name
+  puts "#{speaker} says you should vote for them!"
   sleep 1
 
   all.each do |voter|
     voter.listen(speaker)
   end
-  @results.push(speaker)
+  @final
 end
 
+
+public
   def speech
+    stump
    stats
+   every_stump
    end
 
 
