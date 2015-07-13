@@ -41,7 +41,7 @@ end
 class Candidate < Voter
   attr_accessor :candidate_party, :candidate_name, :counter
 
-  def initialize(candidate_name, candidate_party, counter)
+  def initialize(candidate_name, candidate_party)
     @candidate_name = candidate_name
     @candidate_party = candidate_party
     @counter = 1
@@ -64,7 +64,7 @@ end
 
 public
 def listen(candidate)
-  puts "#{candidate}: #{candidate} sucks!"
+  puts "#{candidate_name}: #{candidate_name} sucks!"
 end
 
 
