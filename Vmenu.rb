@@ -133,9 +133,9 @@ end
 end
 
 def candidate_update
-sleep 2
-$candidate_array.each { |x|
-print x.candidate_name + ", \n"
+  sleep 2
+  $candidate_array.each { |x|
+    print x.candidate_name + ", \n"
 }
 
 puts "Which Candidate are you going to change?"
